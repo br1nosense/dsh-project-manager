@@ -1,0 +1,30 @@
+# @dsh-user/dsh-project-manager bundle patch
+#
+# 挂载项目管理插件：
+#   - 注册 `projectManager` 设置命名空间（installSettingsSection，配置落在
+#     settings.yaml 的 projectManager: 段，热重载）
+#   - 提供 `projectManager` 服务 + webServer 前缀路由 /project-manager/*
+#     （REST API：项目增删改查、启停、日志、热重载状态）
+#   - 浏览器半边（./client）在设置页注册「项目管理」面板
+#
+# 在 dsh-base 之后、用户 cordis.patch.yml 之前应用；需要 settings 与 webServer 服务。
+
+- insert:
+    - id: project-manager
+      name: '@dsh-user/dsh-project-manager'
+      inject:
+        - settings
+        - webServer
+      config:
+        # 项目配置由设置命名空间管理；此处只放默认值（组合层）
+        # 每个项目：
+        #   id: 唯一标识（自动生成，slug）
+        #   name: 项目显示名
+        #   cwd: 项目工作目录
+        #   command: 启动命令（如 npm run dev / python app.py）
+        #   args: 命令附加参数（数组）
+        #   autoStart: dsh 启动时自动拉起
+        #   hotReload: 文件变更时自动重启
+        #   watchExts: 触发热重载的文件后缀白名单（空=全部）
+        #   env: 附加环境变量（对象）
+        projects: []
