@@ -19,6 +19,20 @@ DSH 项目管理插件：在 DSH Web 界面以**悬浮窗口**形式管理开发
 - **日志**：每个项目的 stdout/stderr 按行写入内存环形缓冲（上限可配，默认 2000 行）
   并持久化到 `logs/<id>.log`；悬浮窗内可展开日志查看器，增量轮询、自动滚动、清空。
 
+## 预置项目
+
+作者本机通过插件 REST API 注册了以下项目（持久化在 `settings.yaml` 的 `project-manager:` 段，
+仅作示例；克隆安装后可按需增删）：
+
+| 项目 | 目录 | 启动命令 | WebUI |
+| --- | --- | --- | --- |
+| RVC 翻唱系统 | `C:\code\dsh\rvc` | `venv-rvc\Scripts\python.exe webui.py --port 7865 --noautoopen` | http://127.0.0.1:7865 |
+| CosyVoice | `C:\code\dsh\cosyvoice` | `venv-cosyvoice\Scripts\python.exe start_webui.py --model_dir pretrained_models/Fun-CosyVoice3-0.5B --port 8000` | http://127.0.0.1:8000 |
+
+> CosyVoice 使用 `start_webui.py` 包装脚本：先在 `import gradio` 之前预加载 torch，
+> 规避 Windows 上「gradio 先于 torch import → c10.dll 加载失败（WinError 1114）」的
+> DLL 冲突。模型使用本地 `pretrained_models/Fun-CosyVoice3-0.5B`。
+
 ## 安装
 
 ### 方式一：GitHub 克隆（推荐）
