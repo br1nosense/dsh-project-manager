@@ -36,7 +36,25 @@
     "lib/types/index.d.ts",
     "cordis.patch.yml",
     "README.md",
+    "README.en.md",
+    "CHANGELOG.md",
     "install.ps1"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/br1nosense/dsh-project-manager.git"
+  },
+  "homepage": "https://github.com/br1nosense/dsh-project-manager#readme",
+  "bugs": {
+    "url": "https://github.com/br1nosense/dsh-project-manager/issues"
+  },
+  "keywords": [
+    "dsh-plugin",
+    "deepseek-harness",
+    "project-manager",
+    "dev",
+    "hot-reload"
+  ],
+  "author": "br1nosense",
   "license": "MIT"
 }
